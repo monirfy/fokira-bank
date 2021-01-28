@@ -9,16 +9,13 @@ document.querySelector('.login-btn').addEventListener('click', function () {
 
 document.querySelector('.deposit-input').addEventListener('click', function () {
     const depositValue = getInputValue('.deposit-amount');
-    if (depositValue < 0) {
-        document.querySelector('.deposit-amount').value = '';
-        document.querySelector('.warning-message').textContent = 'Wrong Amount! 😢😢';
+    if (!depositValue) {
+        document.querySelector('.warning-message').textContent = 'Wrong Amount! ðŸ˜¢ðŸ˜¢';
         document.querySelector('.warning-message').classList = 'text-danger';
+        document.querySelector('.deposit-amount').value = '';
     } else {
         getUpdateValue('.current-deposit', depositValue);
         getUpdateValue('.current-balance', depositValue);
-        getUpdateValue('.total-balance', depositValue);
-        displayMessage('Successfully Added 👍');
-        messageTextColor('text-success');
         document.querySelector('.deposit-amount').value = '';
     }
 });
@@ -28,13 +25,10 @@ document.querySelector('.deposit-input').addEventListener('click', function () {
 document.querySelector('.withdraw-input').addEventListener('click', function () {
     const withdrawValue = getInputValue('.withdraw-amount');
     if (withdrawValue < 0) {
-        document.querySelector('.warning-message').textContent = 'Wrong Amount! 😢😢';
-        document.querySelector('.warning-message').classList = 'text-danger';
         document.querySelector('.withdraw-amount').value = '';
     } else {
         getUpdateValue('.current-withdraw', withdrawValue);
         getUpdateValue('.current-balance', -1 * withdrawValue);
-        getUpdateValue('.total-balance', -1 * withdrawValue);
         document.querySelector('.withdraw-amount').value = '';
     }
 });
@@ -52,16 +46,4 @@ function getUpdateValue(updateValue, newValue) {
     let totalValue = currentValue + newValue;
 
     document.querySelector(updateValue).textContent = totalValue;
-}
-
-// Function for Warning Message Text
-function displayMessage(message) {
-    const warningMessage = (document.querySelector('.warning-message').textContent = message);
-    return warningMessage;
-}
-
-// Function for Warning Message Text Color
-function messageTextColor(className) {
-    const warningText = (document.querySelector('.warning-message').classList = className);
-    return warningText;
 }
