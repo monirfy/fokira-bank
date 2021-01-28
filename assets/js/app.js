@@ -9,7 +9,7 @@ document.querySelector('.login-btn').addEventListener('click', function () {
 
 document.querySelector('.deposit-input').addEventListener('click', function () {
     const depositValue = getInputValue('.deposit-amount');
-    if (!depositValue) {
+    if (depositValue > 0) {
         document.querySelector('.deposit-amount').value = '';
         document.querySelector('.warning-message').textContent = 'Wrong Amount! 😢😢';
         document.querySelector('.warning-message').classList = 'text-danger';
@@ -27,7 +27,7 @@ document.querySelector('.deposit-input').addEventListener('click', function () {
 
 document.querySelector('.withdraw-input').addEventListener('click', function () {
     const withdrawValue = getInputValue('.withdraw-amount');
-    if (!withdrawValue) {
+    if (withdrawValue > 0) {
         document.querySelector('.warning-message').textContent = 'Wrong Amount! 😢😢';
         document.querySelector('.warning-message').classList = 'text-danger';
         document.querySelector('.withdraw-amount').value = '';
