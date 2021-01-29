@@ -11,7 +11,7 @@ document.querySelector('.deposit-input').addEventListener('click', function () {
     const depositValue = getInputValue('.deposit-amount');
     if (!depositValue || depositValue < 0) {
         document.querySelector('.warning-message').textContent = 'Wrong Amount 😭';
-        document.querySelector('.warning-message').classList = 'text-danger d-block';
+        //document.querySelector('.warning-message').classList = 'text-danger d-block';
         document.querySelector('.deposit-amount').value = '';
     } else {
         getUpdateValue('.current-deposit', depositValue);
@@ -28,11 +28,11 @@ document.querySelector('.withdraw-input').addEventListener('click', function () 
     const currentBalance = Number(document.querySelector('.current-balance').textContent);
     if (!withdrawValue || withdrawValue < 0) {
         document.querySelector('.warning-message').textContent = 'Wrong Amount 😭';
-        document.querySelector('.warning-message').classList = 'text-danger';
+        //document.querySelector('.warning-message').classList = 'text-danger';
         document.querySelector('.withdraw-amount').value = '';
     } else if (withdrawValue > currentBalance) {
         document.querySelector('.warning-message').textContent = 'Insuficiant Balance 😭';
-        document.querySelector('.warning-message').classList = 'text-danger';
+        //document.querySelector('.warning-message').classList = 'text-danger';
     } else {
         getUpdateValue('.current-withdraw', withdrawValue);
         getUpdateValue('.current-balance', -1 * withdrawValue);
